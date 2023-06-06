@@ -4,7 +4,7 @@
       
       <Preloader></Preloader>
       <Navbar></Navbar>
-      <Sidebar></Sidebar>
+      <Sidebar :showsignz="showsignz"></Sidebar>
 
       <div class="content-wrapper">
         
@@ -60,6 +60,14 @@ export default {
         theme: "bootstrap4",
       });
     },
+    handleEvent(showsign) {
+       this.showsignz= showsign
+    }
+  },
+  data(){
+    return{
+      showsignz: true
+    }
   },
   mounted() {
     this.initializeSelect2()
@@ -68,5 +76,4 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback");
 </style>
