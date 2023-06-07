@@ -8,11 +8,11 @@
 
       <div class="content-wrapper">
         
-        <ContentHeader></ContentHeader>
+<!--        <ContentHeader></ContentHeader>-->
 
         <section class="content">
           <div class="container-fluid">
-            <ExampleForm></ExampleForm>
+            <router-view/>
           </div>
         </section>
         
@@ -31,8 +31,8 @@ import "../node_modules/admin-lte/plugins/select2-bootstrap4-theme/select2-boots
 import "../node_modules/admin-lte/plugins/select2/css/select2.min.css"
 
 import Preloader from "./dashboard/Preloader.vue"
-import ContentHeader from "./dashboard/ContentHeader.vue"
-import ExampleForm from "./components/ExampleForm.vue"
+// import ContentHeader from "./dashboard/ContentHeader.vue"
+// import ExampleForm from "./components/ExampleForm.vue"
 import Navbar from "./dashboard/Navbar.vue";
 import Sidebar from "./dashboard/Sidebar.vue";
 import Footer from "./dashboard/Footer.vue";
@@ -43,8 +43,8 @@ export default {
   name: "App",
   components: {
     Preloader,
-    ContentHeader,
-    ExampleForm,
+    // ContentHeader,
+    // ExampleForm,
     Navbar,
     Sidebar,
     Footer,

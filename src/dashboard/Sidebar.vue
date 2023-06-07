@@ -9,10 +9,10 @@
       <span class="brand-text font-weight-light">Gpay to do list</span>
     </a>
     <div class="sidebar" v-if="!isLogin">
-      <a href="login" class="btn" v-show=showsign||showsignz >
+      <a href="login" class="btn" >
         <p> Login </p>
       </a>
-      <a href="signup" class="btn" v-show=showsign||showsignz >
+      <a href="signup" class="btn" >
         <p> Signup </p>
       </a>
     </div>
@@ -109,12 +109,12 @@
 <script>
 export default {
   props :{
-    showsignz: Boolean
+
   },
   data(){
       return{
-          isLogin : false,
-          showsign: true,
+          isLogin : false
+
 
       }
   },
