@@ -9,12 +9,12 @@
       <span class="brand-text font-weight-light">Gpay to do list</span>
     </a>
     <div class="sidebar" v-if="!isLogin">
-      <a href="login" class="btn" >
+      <router-link to="login" class="btn" >
         <p> Login </p>
-      </a>
-      <a href="signup" class="btn" >
+      </router-link>
+      <router-link to="register" class="btn" >
         <p> Signup </p>
-      </a>
+      </router-link>
     </div>
       <!-- Sidebar -->
     <div class="sidebar" v-if="isLogin">

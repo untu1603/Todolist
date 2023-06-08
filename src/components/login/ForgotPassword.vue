@@ -9,7 +9,7 @@
             <div class="card-body login-card-body">
                 <p class="login-box-msg">You forgot your password? Here you can easily retrieve a new password.</p>
 
-                <form action="recover-password.html" method="post">
+                <form>
                     <div class="input-group mb-3">
                         <input type="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
@@ -27,10 +27,10 @@
                 </form>
 
                 <p class="mt-3 mb-1">
-                    <a href="login.html">Login</a>
+                    <router-link to="login">Login</router-link>
                 </p>
                 <p class="mb-0">
-                    <a href="register.html" class="text-center">Register a new membership</a>
+                    <router-link to="register" class="text-center">Register a new membership</router-link>
                 </p>
             </div>
             <!-- /.login-card-body -->
