@@ -4,7 +4,7 @@
       
       <Preloader></Preloader>
       <Navbar></Navbar>
-      <Sidebar :showsignz="showsignz"></Sidebar>
+      <Sidebar :tokenlogin="tokenlogin"></Sidebar>
 
       <div class="content-wrapper">
         
@@ -12,13 +12,11 @@
 
         <section class="content">
           <div class="container-fluid">
-            <router-view/>
+              <router-view @access="handleEvent"></router-view>>
           </div>
         </section>
         
       </div>
-      
-      <Footer></Footer>
       <ControlSidebar></ControlSidebar>
       
     </div>
@@ -35,8 +33,8 @@ import Preloader from "./dashboard/Preloader.vue"
 // import ExampleForm from "./components/ExampleForm.vue"
 import Navbar from "./dashboard/Navbar.vue";
 import Sidebar from "./dashboard/Sidebar.vue";
-import Footer from "./dashboard/Footer.vue";
 import ControlSidebar from "./dashboard/ControlSidebar.vue"
+import {onMounted, ref} from "vue";
 
 
 export default {
@@ -47,31 +45,35 @@ export default {
     // ExampleForm,
     Navbar,
     Sidebar,
-    Footer,
     ControlSidebar
   },
-  methods: {
-    initializeSelect2() {
-      //Initialize Select2 Elements
-      $(".select2").select2();
+    setup() {
+        const showsignz = ref(false);
+        const tokenlogin= ref('');
+        const userId=ref('')
+        const handleEvent = (data) => {
+            tokenlogin.value=data
+        };
 
-      //Initialize Select2 Elements
-      $(".select2bs4").select2({
-        theme: "bootstrap4",
-      });
-    },
-    handleEvent(showsign) {
-       this.showsignz= showsign
+        const initializeSelect2 = () => {
+            // Initialize Select2 Elements
+            $(".select2").select2();
+
+            // Initialize Select2 Elements with Bootstrap 4 theme
+            $(".select2bs4").select2({
+                theme: "bootstrap4",
+            });
+        };
+
+        onMounted(initializeSelect2);
+
+        return {
+            showsignz,
+            tokenlogin,
+            userId,
+            handleEvent
+        };
     }
-  },
-  data(){
-    return{
-      showsignz: true
-    }
-  },
-  mounted() {
-    this.initializeSelect2()
-  }
 };
 </script>
 

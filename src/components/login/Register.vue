@@ -10,7 +10,6 @@
                     <p class="login-box-msg">Register a new membership</p>
 
                     <form @submit.prevent=validateForm>
-                        <p>{{ access_token }}</p>
                         <p class="red">{{ errors }}</p>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Full name" v-model="formdata.FullName">
@@ -87,10 +86,14 @@ import {reactive, ref} from "vue";
 import axios from "axios";
 import {object} from 'yup';
 import * as Yup from "yup";
+import {useRouter} from "vue-router";
+
 
 export default {
     name: "Register",
-    setup() {
+    emits: ['access', 'submit'],
+    setup(props,{ emit }) {
+        const router = useRouter();
         const formdata = reactive({
             FullName: '',
             Email: '',
@@ -99,7 +102,6 @@ export default {
             UserName: '',
             Role: "USER"
         });
-        const access_token=ref('');
         const errors=ref('');
         const data = object({
             FullName: Yup.string().required(),
@@ -113,6 +115,7 @@ export default {
             try {
                 data.validateSync(formdata);
                 ao (formdata);
+                router.push({ name: "home" });
             } catch (error) {
                 errors.value=error.message;
             }
@@ -121,7 +124,7 @@ export default {
             try {
                 const res= await axios.post(
                     'http://localhost:8080/api/v1/auth/register',mes)
-                access_token.value=res.data.access_token;
+                emit('access',res.data.access_token);
             } catch (error) {
                 console.log(error)
             }
@@ -129,10 +132,9 @@ export default {
 
         return {formdata,errors,validateForm};
     }
+
 }
-
-
-</script>
+</script >
 
 <style scoped>
 .red {

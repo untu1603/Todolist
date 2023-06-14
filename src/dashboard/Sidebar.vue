@@ -1,8 +1,6 @@
 <template>
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4"
-         @mouseenter="showsign = true"
-         @mouseleave="showsign = false">
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
       <img src="../assets/img/GpayLogo.png" alt="Gpay Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -27,9 +25,6 @@
           <a href="#" class="d-block">Carlos Carvalho <i class="nav-icon far fa-circle text-danger"></i></a>
         </div>
       </div>
-
-
-
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -107,19 +102,16 @@
 </template>
 
 <script>
+import {onBeforeUpdate, ref} from "vue";
 export default {
-  props :{
-
-  },
-  data(){
-      return{
-          isLogin : false
-
-
-      }
-  },
-    methods: {
-
+    props: ['tokenlogin'],
+    setup(props){
+        let isLogin= ref(false);
+        onBeforeUpdate(() => {
+            console.log('Component updated ',props.tokenlogin);
+            isLogin.value=true;
+        });
+        return{isLogin}
     }
 }
 </script>
